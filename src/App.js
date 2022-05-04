@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Card from "./components/Card";
+import axios from "axios";
+import React from "react";
 
 function App() {
+  const [user, setUser] = React.useState([]);
+
+  React.useEffect(()=>{
+    axios.get("https://6272b2f4c455a64564c55f15.mockapi.io/users").then(res => {
+      setUser(res.data);
+    })
+  })
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header/>
+      <div className="content">
+        {
+          user.map((user)=>(
+            
+            <Card 
+            key = {user.id}
+            firstName ={user.firstName}
+            lastName = {user.lastName}
+            post = {user.post}
+            />
+          ))
+        }
+      </div>
     </div>
   );
 }
