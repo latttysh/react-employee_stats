@@ -35,6 +35,7 @@ function App() {
             firstName ={user.firstName}
             lastName = {user.lastName}
             post = {user.post}
+            avatar = {user.avatar}
             />
           ))
         }

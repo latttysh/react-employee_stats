@@ -1,8 +1,8 @@
 
-function Card({firstName, lastName, post}){
+function Card({firstName, lastName, post, avatar}){
   return(
     <div className="block">
-      <img className="block__avatar" src="/img/employee-avatar.png" alt="avatar" />
+      <img height={58} width={58} className="block__avatar" src={avatar} alt="avatar" />
       <div className="block-info">
         <h3 className="block-info__name">{firstName}  {lastName}</h3>
         <p className="block-info__post">{post}</p>
