@@ -1,6 +1,5 @@
 import Header from "./components/Header";
 import Card from "./components/Card";
-import Pagination from "./components/Pagination";
 import axios from "axios";
 import React from "react";
 
@@ -8,27 +7,38 @@ function App() {
   const [data, setData] = React.useState(0);
   const [user, setUser] = React.useState([]);
   const [currentPage, setCurrentPage] = React.useState(1);
+    const [searchValue,setSearchValue] = React.useState('');
   const pages = [];
+
+
 
   React.useEffect(()=>{
     axios.get(`https://6272b2f4c455a64564c55f15.mockapi.io/users?page=${currentPage}&limit=12`).then(res => {
       setUser(res.data);
     });
     axios.get("https://6272b2f4c455a64564c55f15.mockapi.io/users").then(res => {
-      setData(Object.keys(res.data).length);
+      setData(res.data);
     })
   },[currentPage])
   
-    for(let i=1;i< (Math.ceil(data/12)); i++){
+    for(let i=1;i< (Math.ceil(Object.keys(data).length/12)); i++){
     pages.push(i);
     }
   
+
+    const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value); 
+  }
   return (
     <div className="wrapper">
-      <Header/>
+      <Header 
+      change = {onChangeSearchInput}
+      value = {searchValue}/>
       <div className="content">
         {
-          user.map((user)=>(
+          user
+          .filter(data=>data.firstName.toLowerCase().includes(searchValue.toLocaleLowerCase()))
+          .map((user)=>(
             
             <Card 
             key = {user.id}
