@@ -75,6 +75,7 @@ body{
       font-weight: 600;
       font-size: 16px;
       line-height: 19px;
+      cursor: pointer;
     }
     &__post{
       font-weight: 400;
@@ -86,9 +87,9 @@ body{
 }
 
 .pages{
-
-  display: block;
-  margin: 0 auto;
+  padding: 45px;
+  margin-top: 20px;
+  text-align: center;
   .page{
     margin-right: 10px;
     cursor: pointer;

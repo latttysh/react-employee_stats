@@ -38,13 +38,13 @@ function App() {
             />
           ))
         }
-        <div className="pages">
+      </div>
+      <div className="pages">
           {pages.map((page,index)=> 
           <span 
           className={currentPage === page ? "current-page" : "page"} 
           onClick={()=> setCurrentPage(index+1)}
           key={index}>{page}</span> )}
-      </div>
       </div>
 
     </div>
