@@ -84,3 +84,18 @@ body{
     }
   }
 }
+
+.pages{
+
+  display: block;
+  margin: 0 auto;
+  .page{
+    margin-right: 10px;
+    cursor: pointer;
+    color: #9B9B9B;
+  }
+  .current-page{
+    color: black;
+    margin-right: 10px;
+  }
+}
